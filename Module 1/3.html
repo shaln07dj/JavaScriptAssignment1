@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Question 3 </title>
+<style>
+body {padding-top:50px} 
+</style> 
+</head>
+<body>
+
+
+<input type="text" id="text1"></input>
+<input type="button" id="button1" value="Add" onclick="add_element_to_array();"></input>
+<input type="button" id="button2" value="Display " onclick="disableButton(this)"></input>
+<div id="Result">
+</div> 
+<p id="repeated"> </p>
+
+<script>
+var x = 0;
+var c=0;
+var array = Array();
+var arr=Array();
+
+
+function add_element_to_array()
+{
+ array[x] = document.getElementById("text1").value;
+    
+ /*alert("Element: " + array[x] + " Added at index " + x);*/
+ x++;
+ 
+ 
+ document.getElementById("text1").value = "";
+}
+
+
+function display_array()
+{
+   var e = "<hr/>";  
+   var repeated="<hr/>";
+    
+    
+   for (var y=0; y<array.length; y++)
+   {
+    arr[c]=array[y]
+     e += "Element " + y + " = " + array[y] + "<br/>"
+     c++;
+   }
+   var sorted_arr = arr.slice().sort();
+    var results;
+    var index;
+    for (var i = 0; i < sorted_arr.length - 1; i++) {
+        if (sorted_arr[i + 1] == sorted_arr[i])
+         {  
+            results=sorted_arr[i];
+            index=i;
+        }
+    }
+            repeated += "Element at  " + index + " = " + results + "th location is the repeated element"+ "<br/>"
+            
+        
+    
+
+    
+       
+
+
+
+   document.getElementById("Result").innerHTML = e;
+   document.getElementById("repeated").innerHTML = repeated;
+   
+}
+function disableButton(btn){ /* on click action of dispaly button*/
+              display_array(); /*calling display function*/
+				document.getElementById("button1").disabled = true;
+				document.getElementById("button2").disabled = true;/* disabling the button at once to prevent over execution of display method*/
+			}
+
+  
+
+
+</script>
+</body>
+</html>
+

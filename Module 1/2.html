@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Question 2</title>
+<style>
+body {padding-top:50px} 
+</style> 
+</head>
+<body>
+
+    <h3 id ="heading">Please Add The Elements</h3>
+<input type="text" id="text1"></input>
+<input type="button" id="button1" value="Add" onclick="add_element_to_array();"></input>
+<input type="button" id="button2" value="Display " onclick="disableButton(this)"></input>
+<div id="Result">
+</div> 
+<p id="demo"> </p>
+
+<script>
+var x = 0;
+var c=0;
+var array1;
+var array = Array();
+var arr=Array();
+
+
+function add_element_to_array()
+{
+ array1 = document.getElementById("text1").value;
+ if(array1==0|| array1==1 && array1!=='null'){ /* here checking for 1 and 0 values */
+     array[x]=array1;
+ /*alert("Element: " + array[x] + " Added at index " + x);*/
+ x++;
+ }
+ else{
+     alert("Enter value having only 0 or 1");
+ }
+ document.getElementById("text1").value = "";
+}
+
+
+function display_array()
+{
+   var e = "<hr/>";  
+    
+    
+   for (var y=0; y<array.length; y++)
+   {
+     arr[c]=array[y]
+     e += "Element " + y + " = " + array[y] + "<br/>"
+     c++;
+   }
+   let oneCount = 0;
+    let currentCount = 0;
+    
+    for (let i = 0; i<arr.length; i++) {
+        
+        
+        if (arr[i] ==0) {
+            currentCount = 0;
+        } else {
+            currentCount++; /* Incrementing the value of count if 1 is found*/
+        };
+        if (currentCount > oneCount) /*Checking if in above condition if 1 is encountered----*/ 
+        oneCount = currentCount; /* Updating and saving the value of counter this is imp step as it saves the total number of time 1 encountered*/
+    };
+
+    var res = oneCount;
+
+   document.getElementById("Result").innerHTML = e;
+   document.getElementById("demo").innerHTML = res;
+   
+}
+function disableButton(btn){ /* on click action of dispaly button*/
+              display_array(); /*calling display function*/
+              document.getElementById("heading").innerHTML = " "
+				document.getElementById("button1").disabled = true;
+				document.getElementById("button2").disabled = true;/* disabling the button at once to prevent over execution of display method*/
+			}
+
+  
+
+
+</script>
+</body>
+</html>
+

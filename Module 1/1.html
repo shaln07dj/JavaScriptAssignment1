@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Question 1 </title>
+<style>
+body {padding-top:50px} 
+</style> 
+</head>
+<body>
+
+
+<input type="text" id="text1"></input>
+<input type="button" id="button1" value="Add" onclick="add_element_to_array();"></input>
+<input type="button" id="button2" value="Display " onclick="disableButton(this)"></input>
+<div id="Result">
+</div> 
+<p id="even"> </p>
+
+<script>
+var x = 0;
+var c=0;
+var array = Array();
+var arr=Array();
+
+
+function add_element_to_array()
+{
+ array[x] = document.getElementById("text1").value;
+    
+ /*alert("Element: " + array[x] + " Added at index " + x);*/
+ x++;
+ 
+ 
+ document.getElementById("text1").value = "";
+}
+
+
+function display_array()
+{
+   var e = "<hr/>";  
+   var even="<hr/>";
+    
+    
+   for (var y=0; y<array.length; y++)
+   {
+    arr[c]=array[y]
+     e += "Element " + y + " = " + array[y] + "<br/>"
+     c++;
+   }
+
+    for (var i = 0; i<arr.length; i++) {
+    
+        
+        if (arr[i] %2==0){
+        
+            even+= "Element  " + i + "=" + arr[i]+ "  is an even element  "+ "<br/>"
+        }
+        else{
+            even= even;
+        }
+    }
+          /* Incrementing the value of count if 1 is found*/
+    
+       
+
+
+
+   document.getElementById("Result").innerHTML = e;
+   document.getElementById("even").innerHTML = even;
+   
+}
+function disableButton(btn){ /* on click action of dispaly button*/
+              display_array(); /*calling display function*/
+				document.getElementById("button1").disabled = true;
+				document.getElementById("button2").disabled = true;/* disabling the button at once to prevent over execution of display method*/
+			}
+
+  
+
+
+</script>
+</body>
+</html>
+
